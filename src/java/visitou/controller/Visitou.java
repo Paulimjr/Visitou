@@ -39,7 +39,6 @@ public class Visitou extends HttpServlet {
         String nome = (String) request.getParameter("nome");
         String email = (String) request.getParameter("email");
 
-        System.out.println("visit " + visitados + "nome" + nome + "emali" + email);
         HttpSession session = request.getSession(true);
         if (visitados == null || visitados.isEmpty()) {
             visitados = "";
