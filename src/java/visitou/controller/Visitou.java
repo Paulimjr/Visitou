@@ -48,7 +48,6 @@ public class Visitou extends HttpServlet {
         } else {
             String hora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             visitados = (String) request.getSession().getAttribute("visitados");
-            System.out.println("visitados..." + visitados);
             visitados += "\n\r Nome: " + nome + " - Email: " + email + " - visitou às " + hora;
             session.setAttribute("visitados", visitados);
         }
@@ -60,13 +59,7 @@ public class Visitou extends HttpServlet {
             response.setDateHeader("Expires", 0);
 
             HttpSession httpSession = request.getSession();
-            httpSession.removeAttribute("user_logado");
-            httpSession.removeAttribute("user_name");
-            httpSession.removeAttribute("user_img_perfil");
-            httpSession.removeAttribute("user_hora_acesso");
-            httpSession.removeAttribute("error");
-            httpSession.removeAttribute("user_id");
-
+            httpSession.removeAttribute("visitados");
             httpSession.invalidate();
         }
 
